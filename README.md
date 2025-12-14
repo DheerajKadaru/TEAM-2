@@ -1,4 +1,4 @@
-#🌊 **S.A.G.A.R**
+# 🌊 **S.A.G.A.R**
 Smart Aquatic Genomic Analysis & Research
 
 S.A.G.A.R is an AI-powered marine eDNA analysis platform designed to uncover hidden biodiversity in deep-ocean ecosystems by combining environmental DNA (eDNA), Generative AI–based representation learning, and intelligent machine learning algorithms for species discovery and conservation.
@@ -21,11 +21,11 @@ Limited interpretability for conservation decision-making
 
 As a result, a significant portion of marine biodiversity remains undetected.
 
-_**Solution Overview** _
+_**Solution Overview**_
 
 S.A.G.A.R addresses these challenges by integrating DNABERT-based GenAI embeddings, supervised learning for known species, and unsupervised clustering for novel species discovery, along with an AI-powered chatbot for interpretation.
 
-Detailed Pipeline with Algorithms & Justification
+_**Detailed Pipeline:**_
 
 1️. eDNA Data Collection
 
@@ -42,7 +42,7 @@ FASTQ parsing using Biopython
 Why used:
 Efficient extraction of DNA reads without information loss.
 
-3️.DNA Sequence Representation
+3️. DNA Sequence Representation
 
 here we do 
 
