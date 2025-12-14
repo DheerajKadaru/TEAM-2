@@ -1,0 +1,665 @@
+@import url("https://fonts.googleapis.com/css2?family=Libertinus+Mono&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 217 19% 27%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 19% 27%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 19% 27%;
+    --input: 217 19% 27%;
+    --ring: 199 89% 48%;
+    --radius: 0.75rem;
+    --dna-primary: 199 89% 48%;
+    --dna-secondary: 260 80% 60%;
+    --warning-amber: 38 100% 60%;
+    --success-green: 160 100% 45%;
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 19% 27%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 19% 27%;
+    --sidebar-ring: 199 89% 48%;
+    --chart-1: 199 89% 48%;
+    --chart-2: 260 80% 60%;
+    --chart-3: 200 100% 60%;
+    --chart-4: 38 100% 60%;
+    --chart-5: 15 100% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    background-color: hsla(222, 47%, 11%, 0.8);
+    @apply text-foreground antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Orbitron", monospace;
+  }
+}
+
+/* Flowing Water Animations */
+@keyframes waterFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+
+  25% {
+    transform: translateX(25%) translateY(-10px);
+  }
+
+  50% {
+    transform: translateX(50%) translateY(0);
+  }
+
+  75% {
+    transform: translateX(75%) translateY(-10px);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  33% {
+    transform: translateY(-20px) translateX(10px);
+  }
+
+  66% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+}
+
+@keyframes dnaRotate {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(180deg) translateY(-10px);
+  }
+
+  100% {
+    transform: rotate(360deg) translateY(0);
+  }
+}
+
+@keyframes dnaFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-30px) rotate(5deg);
+  }
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    text-shadow: 0 0 15px hsla(200, 85%, 50%, 0.6),
+      0 0 30px hsla(200, 80%, 55%, 0.4), 0 0 45px hsla(200, 75%, 60%, 0.3);
+    box-shadow: 0 0 20px hsla(200, 85%, 50%, 0.2),
+      0 0 40px hsla(200, 80%, 55%, 0.1);
+  }
+
+  50% {
+    text-shadow: 0 0 20px hsla(200, 85%, 55%, 0.7),
+      0 0 40px hsla(200, 80%, 60%, 0.5), 0 0 60px hsla(200, 75%, 65%, 0.4);
+    box-shadow: 0 0 30px hsla(200, 85%, 55%, 0.3),
+      0 0 60px hsla(200, 80%, 60%, 0.2);
+  }
+}
+
+@keyframes gradientShift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Liquid Glass Boxes */
+.liquid-glass-box-large {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      hsla(200, 50%, 95%, 0.25) 0%,
+      hsla(200, 40%, 90%, 0.15) 50%,
+      hsla(190, 45%, 92%, 0.2) 100%);
+  backdrop-filter: blur(30px) saturate(180%);
+  border: 2px solid hsla(200, 60%, 85%, 0.4);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px hsla(200, 50%, 20%, 0.2),
+    inset 0 1px 0 hsla(200, 60%, 100%, 0.6),
+    inset 0 -1px 0 hsla(200, 40%, 70%, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-box-large::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 30%,
+      hsla(200, 60%, 90%, 0.1) 50%,
+      transparent 70%);
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+.liquid-glass-box-medium {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      hsla(200, 45%, 94%, 0.2) 0%,
+      hsla(200, 35%, 88%, 0.12) 50%,
+      hsla(190, 40%, 90%, 0.18) 100%);
+  backdrop-filter: blur(25px) saturate(170%);
+  border: 2px solid hsla(200, 55%, 80%, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 6px 24px hsla(200, 45%, 18%, 0.18),
+    inset 0 1px 0 hsla(200, 55%, 98%, 0.5),
+    inset 0 -1px 0 hsla(200, 35%, 65%, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-box-medium::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 30%,
+      hsla(200, 55%, 88%, 0.08) 50%,
+      transparent 70%);
+  animation: shimmer 5s ease-in-out infinite;
+}
+
+.liquid-glass-box-small {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      hsla(200, 40%, 93%, 0.18) 0%,
+      hsla(200, 30%, 86%, 0.1) 50%,
+      hsla(190, 35%, 88%, 0.15) 100%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border: 1.5px solid hsla(200, 50%, 75%, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px hsla(200, 40%, 16%, 0.15),
+    inset 0 1px 0 hsla(200, 50%, 96%, 0.4),
+    inset 0 -1px 0 hsla(200, 30%, 60%, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-box-small::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 30%,
+      hsla(200, 50%, 86%, 0.06) 50%,
+      transparent 70%);
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+.liquid-glass-box-hero {
+  /* Dynamic size */
+  max-width: 90vw;
+  background: linear-gradient(135deg,
+      hsla(200, 50%, 96%, 0.15) 0%,
+      hsla(200, 40%, 92%, 0.1) 50%,
+      hsla(190, 45%, 94%, 0.12) 100%);
+  backdrop-filter: blur(35px) saturate(190%);
+  border: 2px solid hsla(200, 60%, 88%, 0.3);
+  border-radius: 32px;
+  box-shadow: 0 12px 48px hsla(200, 50%, 22%, 0.25),
+    inset 0 2px 0 hsla(200, 60%, 100%, 0.7),
+    inset 0 -2px 0 hsla(200, 40%, 75%, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass-box-hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent 30%,
+      hsla(200, 60%, 92%, 0.12) 50%,
+      transparent 70%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@layer components {
+  .glass-card {
+    @apply relative overflow-hidden rounded-xl;
+    background: linear-gradient(135deg,
+        hsla(222, 47%, 11%, 0.7) 0%,
+        hsla(222, 47%, 15%, 0.5) 100%);
+    backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid hsla(199, 89%, 48%, 0.3);
+    box-shadow: 0 8px 32px hsla(0, 0%, 0%, 0.3),
+      0 2px 8px hsla(0, 0%, 0%, 0.2), inset 0 1px 0 hsla(222, 47%, 30%, 0.4),
+      inset 0 -1px 0 hsla(0, 0%, 0%, 0.2);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: linear-gradient(135deg,
+        hsla(222, 47%, 15%, 0.8) 0%,
+        hsla(222, 47%, 20%, 0.6) 100%);
+    border-color: hsla(199, 89%, 48%, 0.5);
+    box-shadow: 0 12px 48px hsla(0, 0%, 0%, 0.4),
+      0 4px 16px hsla(0, 0%, 0%, 0.3), inset 0 1px 0 hsla(222, 47%, 40%, 0.5),
+      inset 0 -1px 0 hsla(0, 0%, 0%, 0.3),
+      0 0 0 1px hsla(199, 89%, 48%, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        hsla(199, 89%, 48%, 0.1),
+        transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  .text-outlined {
+    color: hsl(199, 89%, 48%);
+    text-shadow: 0 0 10px hsla(199, 89%, 48%, 0.5);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .text-outlined-subtitle {
+    color: hsl(210, 40%, 90%);
+    text-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.5);
+    font-weight: 600;
+  }
+
+  .text-outlined-body {
+    color: hsl(210, 40%, 80%);
+    text-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.5);
+    font-weight: 500;
+  }
+
+  .text-outlined-card-title {
+    color: hsl(210, 40%, 95%);
+    text-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.5);
+    font-weight: 700;
+  }
+
+  .text-outlined-card-body {
+    color: hsl(210, 40%, 85%);
+    text-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.5);
+    font-weight: 500;
+  }
+
+  .neon-text {
+    color: hsl(199, 89%, 48%);
+    text-shadow: 0 0 10px hsla(199, 89%, 48%, 0.8),
+      0 0 20px hsla(199, 89%, 48%, 0.4);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .ocean-video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -30;
+  }
+
+  .ocean-video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.8) contrast(1.1) saturate(1.2);
+    /* Darkened slightly */
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .ocean-video-overlay {
+    @apply absolute inset-0;
+    background: radial-gradient(ellipse at top,
+        hsla(222, 47%, 11%, 0.4) 0%,
+        transparent 60%),
+      radial-gradient(ellipse at bottom,
+        hsla(222, 47%, 11%, 0.6) 0%,
+        transparent 60%),
+      linear-gradient(180deg,
+        hsla(222, 47%, 11%, 0.3) 0%,
+        transparent 40%,
+        hsla(222, 47%, 11%, 0.6) 100%);
+    pointer-events: none;
+    z-index: -29;
+  }
+
+  .ocean-bg-fallback {
+    @apply fixed inset-0;
+    z-index: -31;
+    background: radial-gradient(ellipse at top,
+        hsl(222, 47%, 15%) 0%,
+        transparent 50%),
+      radial-gradient(ellipse at bottom, hsl(222, 47%, 10%) 0%, transparent 50%),
+      linear-gradient(180deg,
+        hsl(222, 47%, 11%) 0%,
+        hsl(222, 47%, 15%) 50%,
+        hsl(222, 47%, 11%) 100%);
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+    animation: waterFlow 15s ease-in-out infinite;
+    display: none;
+    /* Hidden by default, only shows if video fails */
+  }
+
+  .ocean-bg {
+    @apply fixed inset-0 -z-10;
+    background: radial-gradient(ellipse at top,
+        hsl(222, 47%, 15%) 0%,
+        transparent 50%),
+      radial-gradient(ellipse at bottom, hsl(222, 47%, 10%) 0%, transparent 50%),
+      linear-gradient(180deg,
+        hsl(222, 47%, 11%) 0%,
+        hsl(222, 47%, 15%) 50%,
+        hsl(222, 47%, 11%) 100%);
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+    animation: waterFlow 15s ease-in-out infinite;
+  }
+
+
+
+  .btn-ocean {
+    @apply relative overflow-hidden px-8 py-4 rounded-xl font-semibold transition-all duration-300;
+    background: linear-gradient(135deg,
+        hsl(200, 85%, 45%),
+        hsl(190, 75%, 55%),
+        hsl(200, 85%, 45%));
+    background-size: 200% 200%;
+    color: hsl(0, 0%, 100%);
+    box-shadow: 0 6px 25px hsla(200, 85%, 45%, 0.4),
+      0 0 40px hsla(200, 80%, 50%, 0.3), inset 0 1px 0 hsla(200, 100%, 70%, 0.5),
+      inset 0 -1px 0 hsla(200, 60%, 30%, 0.2);
+    position: relative;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  .btn-ocean:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 35px hsla(200, 85%, 50%, 0.5),
+      0 0 50px hsla(200, 80%, 55%, 0.4), inset 0 1px 0 hsla(200, 100%, 75%, 0.6);
+  }
+
+  .btn-ocean::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        hsla(0, 0%, 100%, 0.3),
+        transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-ocean:hover::before {
+    left: 100%;
+  }
+
+  .btn-ocean:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px hsla(220, 90%, 50%, 0.4);
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-sm font-semibold transition-all duration-300 text-muted-foreground hover:text-foreground;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    @apply text-primary;
+  }
+
+  .nav-link.active::after {
+    content: "";
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1 rounded-full bg-primary/50 blur-[2px];
+  }
+
+  .metric-value {
+    @apply text-4xl font-bold text-primary;
+  }
+
+  .metric-label {
+    @apply text-sm uppercase tracking-wider mt-2 text-muted-foreground;
+  }
+
+  .chat-bubble-user {
+    @apply ml-auto max-w-[80%] px-4 py-2 rounded-2xl rounded-br-sm;
+    background: linear-gradient(135deg, hsl(220, 90%, 50%), hsl(260, 80%, 60%));
+    color: hsl(0, 0%, 100%);
+    box-shadow: 0 4px 15px hsla(220, 90%, 50%, 0.25);
+  }
+
+  .chat-bubble-assistant {
+    @apply mr-auto max-w-[80%] px-4 py-2 rounded-2xl rounded-bl-sm;
+    background: hsla(222, 47%, 15%, 0.9);
+    border: 1px solid hsla(199, 89%, 48%, 0.15);
+    box-shadow: 0 4px 15px hsla(0, 0%, 0%, 0.2);
+    color: hsl(210, 40%, 90%);
+  }
+
+  .status-active {
+    background: hsla(160, 100%, 45%, 0.2);
+    color: hsl(160, 100%, 45%);
+    border: 1px solid hsla(160, 100%, 45%, 0.3);
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    box-shadow: 0 0 10px hsla(160, 100%, 45%, 0.2);
+  }
+
+  .status-warning {
+    background: hsla(38, 100%, 60%, 0.2);
+    color: hsl(38, 100%, 60%);
+    border: 1px solid hsla(38, 100%, 60%, 0.3);
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    box-shadow: 0 0 10px hsla(38, 100%, 60%, 0.2);
+  }
+
+  .status-critical {
+    background: hsla(0, 85%, 60%, 0.2);
+    color: hsl(0, 85%, 60%);
+    border: 1px solid hsla(0, 85%, 60%, 0.3);
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    box-shadow: 0 0 10px hsla(0, 85%, 60%, 0.2);
+  }
+
+  .dna-float {
+    animation: dnaFloat 6s ease-in-out infinite;
+  }
+
+  .dna-float:hover {
+    animation-duration: 4s;
+    filter: brightness(1.2) drop-shadow(0 0 20px hsla(220, 90%, 50%, 0.4));
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+  }
+
+  .chat-panel {
+    @apply glass-card;
+    max-height: calc(100vh - 8rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .alert-banner {
+    @apply relative z-30 py-2;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: hsla(220, 15%, 95%, 0.5);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, hsl(220, 90%, 50%), hsl(260, 80%, 60%));
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, hsl(220, 90%, 60%), hsl(260, 80%, 70%));
+}
+
+.leaflet-container {
+  background: hsl(222, 47%, 11%) !important;
+  font-family: "Inter", sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+  background: hsla(222, 47%, 11%, 0.95) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid hsla(199, 89%, 48%, 0.3) !important;
+  border-radius: 0.75rem !important;
+  color: hsl(210, 40%, 90%) !important;
+  box-shadow: 0 8px 32px hsla(0, 0%, 0%, 0.4) !important;
+}
+
+.leaflet-popup-tip {
+  background: hsla(222, 47%, 11%, 0.95) !important;
+}
