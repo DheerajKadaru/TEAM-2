@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🌊 **S.A.G.A.R**
 
 **Smart Aquatic Genomic Analysis & Research**
